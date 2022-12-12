@@ -13,6 +13,7 @@ if answer_user == "да" or answer_user == "Да":
     count_user1 = 0
     count_user2 = 0
     sortition = randint(0,1)
+
     while sweets_on_the_table > 28:
         if sortition == 0:
             print(f'Ходит игрок {name_user1}. Сколько конфет Вы хотите взять сейчас?')
@@ -20,22 +21,23 @@ if answer_user == "да" or answer_user == "Да":
             if choice_user1 >= 0 and choice_user1 <= 28:
                 sweets_on_the_table = sweets_on_the_table - choice_user1
                 count_user1 = count_user1 + choice_user1
-                sortition == 1
-                print(f'Количество конфет на столе: {sweets_on_the_table}.\n Количество конфет у первого игрока ({name_user1}): {count_user1}.\n Переход хода.')
+                sortition = 1
+                print(f' Количество конфет на столе: {sweets_on_the_table}.\n Количество конфет у первого игрока ({name_user1}): {count_user1}.\n Переход хода.')
             elif choice_user1 < 0 or choice_user1 > 28:
                 print('Вы нарушили правила. В наказание Вы ничего не получаете, и ход переходит следующему игроку.')
-                sortition == 1
+                sortition = 1
         elif sortition == 1:
             print(f'Ходит игрок {name_user2}. Сколько конфет Вы хотите взять?')
             choice_user2 = int(input())
             if choice_user2 >= 0 and choice_user2 <= 28:
                 sweets_on_the_table = sweets_on_the_table - choice_user2
                 count_user2 = count_user2 + choice_user2
-                sortition == 0
-                print(f'Количество конфет на столе: {sweets_on_the_table}.\n Количество конфет у второго игрока ({name_user2}): {count_user2}.\n Переход хода.')
+                sortition = 0
+                print(f' Количество конфет на столе: {sweets_on_the_table}.\n Количество конфет у второго игрока ({name_user2}): {count_user2}.\n Переход хода.')
             elif choice_user2 < 0 or choice_user2 > 28:
                 print('Вы нарушили правила. В наказание Вы ничего не получаете, и ход переходит следующему игроку.')
-                sortition == 0
+                sortition = 0
+
     if sortition == 0:
         count_user1 = count_user1 + sweets_on_the_table
         print(f'Победитель - {name_user1}. У этого игрока аж {count_user1} конфет(ы)!\n У второго игрока {count_user2} конфет(ы).\n Поздравляем победителя, а проигравшему желаем удачи в следующий раз!')
@@ -48,3 +50,7 @@ else:
     print('Извините, но я Вас не понял. Повторите попытку (перезапустите программу)')
     
 
+# Добавить бота - просто в выборе одного из игроков надо убрать input и добавить randint от 0 до 28 включительно.
+# Над интеллектом особо не думал, но тоже можно к выбору рандинта добавить условия, которые будут "регулировать" этот рандинт
+# в зависимости, например, от конфет на столе в данный момент.
+# Писать отдельный код не стал, т.к. копировать целый код ради изменения одной строчки (простой) - нецелесообразно.
